@@ -6,5 +6,7 @@ target 'Wantedly-iOS-Work' do
   use_frameworks!
 
   # Pods for Wantedly-iOS-Work
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
 
 end

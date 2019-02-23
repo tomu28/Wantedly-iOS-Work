@@ -1,0 +1,6 @@
+framework module Pods_Wantedly_iOS_Work {
+  umbrella header "Pods-Wantedly-iOS-Work-umbrella.h"
+
+  export *
+  module * { export * }
+}
