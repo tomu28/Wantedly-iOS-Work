@@ -20,7 +20,7 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-         getAPIData()
+        getAPIData()
         print("viewDidLoad")
         print(APIDataCount)
     }
@@ -39,8 +39,10 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             dataObject.forEach {(key, dataObject) in
                 let APIData: [String: String?] = [
                     "title": dataObject["title"].string,
-                     "looking_for": dataObject["looking_for"].string,
-                     "companyName": dataObject["company"]["name"].string
+                    "looking_for": dataObject["looking_for"].string,
+                    "companyName": dataObject["company"]["name"].string,
+                    "image": dataObject["image"]["i_320_131"].string,
+                    "avatar": dataObject["avatar"]["s_30"].string
                     ]
                 self.APIDataList.append(APIData)
                 self.APIDataCount = self.APIDataList.count
@@ -54,7 +56,6 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // getAPIData()
         print("tableView  section内")
         print(self.APIDataCount)
         return self.APIDataCount
@@ -74,8 +75,7 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 //        label4.text = "会社名"
         
         if APIDataList != [] {
-//            print("APIDataList")
-//            print(APIDataList)
+            
             let article = APIDataList[indexPath.row]
 
             print("title")
@@ -84,11 +84,6 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             label2.text = article["looking_for"]!
             label4.text = article["companyName"]!
             
-            
-            
-//            label1.text = self.APIDataList[0]["title"] ?? "募集タイトル"
-//            label2.text = self.APIDataList[0]["looking_for"] ?? "募集ポジション"
-//            label4.text = self.APIDataList[0]["companyName"] ?? "会社名"
         }
         
         
@@ -97,7 +92,7 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ table: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
+        return 280.0
     }
     
 }
