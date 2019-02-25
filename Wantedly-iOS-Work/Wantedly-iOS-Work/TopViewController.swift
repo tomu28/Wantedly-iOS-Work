@@ -69,17 +69,21 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let label1 = cell.viewWithTag(1)as! UILabel
         let label2 = cell.viewWithTag(2)as! UILabel
         let label4 = cell.viewWithTag(4)as! UILabel
-        label1.text = "募集タイトル"
-        label2.text = "募集ポジション"
-        label4.text = "会社名"
+//        label1.text = "募集タイトル"
+//        label2.text = "募集ポジション"
+//        label4.text = "会社名"
         
         if APIDataList != [] {
 //            print("APIDataList")
 //            print(APIDataList)
+            let article = APIDataList[indexPath.row]
 
             print("title")
             print(self.APIDataList[0]["title"])
-
+            label1.text = article["title"]!
+            label2.text = article["looking_for"]!
+            label4.text = article["companyName"]!
+            
             
             
 //            label1.text = self.APIDataList[0]["title"] ?? "募集タイトル"
