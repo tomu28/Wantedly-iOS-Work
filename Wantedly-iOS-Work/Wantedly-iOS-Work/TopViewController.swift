@@ -10,16 +10,19 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class TopViewController: UIViewController {
-
+class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var table:UITableView!
+    
     var APIDataList: [[String: String?]] = []
+    var APIDataCount = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        getAPIData()
-        
+         getAPIData()
+        print("viewDidLoad")
+        print(APIDataCount)
     }
     
     func getAPIData() {
@@ -36,15 +39,61 @@ class TopViewController: UIViewController {
             dataObject.forEach {(key, dataObject) in
                 let APIData: [String: String?] = [
                     "title": dataObject["title"].string,
-                    "looking_for": dataObject["looking_for"].string,
-                    "companyName": dataObject["company"]["name"].string
+                     "looking_for": dataObject["looking_for"].string,
+                     "companyName": dataObject["company"]["name"].string
                     ]
-                 self.APIDataList.append(APIData)
+                self.APIDataList.append(APIData)
+                self.APIDataCount = self.APIDataList.count
+                
             }
-             print(self.APIDataList)
+            // JSONデータをViewに反映する
+            self.table.reloadData()
             
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // getAPIData()
+        print("tableView  section内")
+        print(self.APIDataCount)
+        return self.APIDataCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        print("tableView内")
+        print(self.APIDataCount)
+        let cell = table.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
+        
+        let label1 = cell.viewWithTag(1)as! UILabel
+        let label2 = cell.viewWithTag(2)as! UILabel
+        let label4 = cell.viewWithTag(4)as! UILabel
+        label1.text = "募集タイトル"
+        label2.text = "募集ポジション"
+        label4.text = "会社名"
+        
+        if APIDataList != [] {
+//            print("APIDataList")
+//            print(APIDataList)
+
+            print("title")
+            print(self.APIDataList[0]["title"])
+
+            
+            
+//            label1.text = self.APIDataList[0]["title"] ?? "募集タイトル"
+//            label2.text = self.APIDataList[0]["looking_for"] ?? "募集ポジション"
+//            label4.text = self.APIDataList[0]["companyName"] ?? "会社名"
+        }
+        
+        
+        return cell
+    }
+    
+    func tableView(_ table: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150.0
     }
     
 }
