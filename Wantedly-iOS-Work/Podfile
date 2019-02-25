@@ -8,5 +8,6 @@ target 'Wantedly-iOS-Work' do
   # Pods for Wantedly-iOS-Work
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'AlamofireImage'
 
 end
