@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import AlamofireImage
 
 class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -42,7 +43,7 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     "looking_for": dataObject["looking_for"].string,
                     "companyName": dataObject["company"]["name"].string,
                     "image": dataObject["image"]["i_320_131"].string,
-                    "avatar": dataObject["avatar"]["s_30"].string
+                    "avatar": dataObject["company"]["avatar"]["s_30"].string
                     ]
                 self.APIDataList.append(APIData)
                 self.APIDataCount = self.APIDataList.count
@@ -78,8 +79,11 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             
             let article = APIDataList[indexPath.row]
 
-            print("title")
-            print(self.APIDataList[0]["title"])
+            print("image")
+            print(self.APIDataList[0]["image"])
+            print(self.APIDataList[1]["image"])
+            print("avatar")
+            print(self.APIDataList[0]["avatar"])
             label1.text = article["title"]!
             label2.text = article["looking_for"]!
             label4.text = article["companyName"]!
