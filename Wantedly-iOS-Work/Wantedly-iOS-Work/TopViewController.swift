@@ -12,14 +12,15 @@ import SwiftyJSON
 import AlamofireImage
 
 var APIDataList: [[String: String?]] = []
-let article: [[String: String?]] = []
+var article: [[String: String?]] = []
 
-class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet var table:UITableView!
     @IBAction func tapScreen(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
+    @IBOutlet weak var SearchBar: UISearchBar!
     
     var APIDataCount = 5
     
@@ -29,6 +30,8 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         getAPIData()
         print("viewDidLoad")
         print(APIDataCount)
+        
+        SearchBar.delegate = self as? UISearchBarDelegate
         
         //tapされた時の動作を宣言する: 一度タップされたらキーボードを隠す
         let hideTap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapScreen))
@@ -40,7 +43,7 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func getAPIData() {
         
-        let _ = Alamofire.request("https://www.wantedly.com/api/v1/projects?q=swift&page=1").responseJSON {
+        let _ = Alamofire.request("https://www.wantedly.com/api/v1/projects?").responseJSON {
             response in guard let object = response.result.value else {
                 return
             }
@@ -116,6 +119,46 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ table: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 280.0
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        getSearch()
+        searchBar.endEditing(true)
+    }
+    
+    func getSearch(){
+        article.removeAll()
+        APIDataList.removeAll()
+        Alamofire.request("https://www.wantedly.com/api/v1/projects?q=" + SearchBar.text!)
+            .responseJSON{ response in
+                guard let object = response.result.value else {
+                    return
+                }
+                let json = JSON(object)
+                
+                // JSONのdataオブジェクトを取り出す
+                let dataObject = json["data"]
+                
+                dataObject.forEach {(key, dataObject) in
+                    let APIData: [String: String?] = [
+                        "title": dataObject["title"].string,
+                        "looking_for": dataObject["looking_for"].string,
+                        "companyName": dataObject["company"]["name"].string,
+                        "image": dataObject["image"]["i_320_131"].string,
+                        "avatar": dataObject["company"]["avatar"]["s_50"].string
+                    ]
+                    APIDataList.append(APIData)
+                    self.APIDataCount = APIDataList.count
+                    print(APIData)
+                }
+                // JSONデータをViewに反映する
+                self.table.reloadData()
+                
+                
+        }
+        
+        
     }
     
 }
