@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2EC5672C837782666DE7FAF2 /* Pods_Wantedly_iOS_Work.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8CF4D5B4C5DA57314EADD7 /* Pods_Wantedly_iOS_Work.framework */; };
+		D842EA332224424000BC4360 /* Label5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D842EA322224423F00BC4360 /* Label5.jpeg */; };
+		D842EA3A222538C600BC4360 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D842EA39222538C600BC4360 /* UIImageView.swift */; };
 		D8BDCFC622214BCB00AF1721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BDCFC522214BCB00AF1721 /* AppDelegate.swift */; };
 		D8BDCFC822214BCB00AF1721 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BDCFC722214BCB00AF1721 /* TopViewController.swift */; };
 		D8BDCFCB22214BCB00AF1721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BDCFC922214BCB00AF1721 /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		95934564783AE94B1B64CC72 /* Pods-Wantedly-iOS-Work.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wantedly-iOS-Work.debug.xcconfig"; path = "Target Support Files/Pods-Wantedly-iOS-Work/Pods-Wantedly-iOS-Work.debug.xcconfig"; sourceTree = "<group>"; };
+		D842EA322224423F00BC4360 /* Label5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Label5.jpeg; sourceTree = "<group>"; };
+		D842EA39222538C600BC4360 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		D8BDCFC222214BCB00AF1721 /* Wantedly-iOS-Work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wantedly-iOS-Work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BDCFC522214BCB00AF1721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8BDCFC722214BCB00AF1721 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +50,6 @@
 				95934564783AE94B1B64CC72 /* Pods-Wantedly-iOS-Work.debug.xcconfig */,
 				E829C46765AE8A02E10F3ACD /* Pods-Wantedly-iOS-Work.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -56,6 +59,14 @@
 				DB8CF4D5B4C5DA57314EADD7 /* Pods_Wantedly_iOS_Work.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D842EA382225389300BC4360 /* extenstion */ = {
+			isa = PBXGroup;
+			children = (
+				D842EA39222538C600BC4360 /* UIImageView.swift */,
+			);
+			path = extenstion;
 			sourceTree = "<group>";
 		};
 		D8BDCFB922214BCB00AF1721 = {
@@ -83,6 +94,8 @@
 				D8BDCFC722214BCB00AF1721 /* TopViewController.swift */,
 				D8BDCFC922214BCB00AF1721 /* Main.storyboard */,
 				D8BDCFCC22214BCE00AF1721 /* Assets.xcassets */,
+				D842EA382225389300BC4360 /* extenstion */,
+				D842EA322224423F00BC4360 /* Label5.jpeg */,
 				D8BDCFCE22214BCE00AF1721 /* LaunchScreen.storyboard */,
 				D8BDCFD122214BCE00AF1721 /* Info.plist */,
 			);
@@ -151,6 +164,7 @@
 			files = (
 				D8BDCFD022214BCE00AF1721 /* LaunchScreen.storyboard in Resources */,
 				D8BDCFCD22214BCE00AF1721 /* Assets.xcassets in Resources */,
+				D842EA332224424000BC4360 /* Label5.jpeg in Resources */,
 				D8BDCFCB22214BCB00AF1721 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D842EA3A222538C600BC4360 /* UIImageView.swift in Sources */,
 				D8BDCFC822214BCB00AF1721 /* TopViewController.swift in Sources */,
 				D8BDCFC622214BCB00AF1721 /* AppDelegate.swift in Sources */,
 			);

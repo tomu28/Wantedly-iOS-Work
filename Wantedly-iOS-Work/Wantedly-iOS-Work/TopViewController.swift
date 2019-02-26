@@ -11,11 +11,13 @@ import Alamofire
 import SwiftyJSON
 import AlamofireImage
 
+var APIDataList: [[String: String?]] = []
+let article: [[String: String?]] = []
+
 class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+
     @IBOutlet var table:UITableView!
     
-    var APIDataList: [[String: String?]] = []
     var APIDataCount = 5
     
     override func viewDidLoad() {
@@ -43,10 +45,10 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     "looking_for": dataObject["looking_for"].string,
                     "companyName": dataObject["company"]["name"].string,
                     "image": dataObject["image"]["i_320_131"].string,
-                    "avatar": dataObject["company"]["avatar"]["s_30"].string
+                    "avatar": dataObject["company"]["avatar"]["s_50"].string
                     ]
-                self.APIDataList.append(APIData)
-                self.APIDataCount = self.APIDataList.count
+                APIDataList.append(APIData)
+                self.APIDataCount = APIDataList.count
                 
             }
             // JSONデータをViewに反映する
@@ -70,26 +72,33 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         let label1 = cell.viewWithTag(1)as! UILabel
         let label2 = cell.viewWithTag(2)as! UILabel
+        
         let label4 = cell.viewWithTag(4)as! UILabel
+        let label5 = cell.viewWithTag(5)as! UIImageView
 //        label1.text = "募集タイトル"
 //        label2.text = "募集ポジション"
+
 //        label4.text = "会社名"
+//        label5.image = UIImage(named: "Label5")
         
+        
+        // label1~4を表示
         if APIDataList != [] {
             
             let article = APIDataList[indexPath.row]
-
-            print("image")
-            print(self.APIDataList[0]["image"])
-            print(self.APIDataList[1]["image"])
-            print("avatar")
-            print(self.APIDataList[0]["avatar"])
+            
             label1.text = article["title"]!
             label2.text = article["looking_for"]!
+//            label3.image = UIImage(named: url)
             label4.text = article["companyName"]!
+            // ロゴを表示
+            cell.imageView?.af_setImage(withURL: URL(string: article["avatar"] as! String)!)
+            
+            // 会社名を表示
+            let url: URL? = URL(string: article["image"] as! String)
+            label5.loadImageAsynchronously(url: url)
             
         }
-        
         
         return cell
     }
