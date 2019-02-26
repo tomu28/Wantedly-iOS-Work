@@ -17,6 +17,9 @@ let article: [[String: String?]] = []
 class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var table:UITableView!
+    @IBAction func tapScreen(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
     
     var APIDataCount = 5
     
@@ -26,6 +29,13 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         getAPIData()
         print("viewDidLoad")
         print(APIDataCount)
+        
+        //tapされた時の動作を宣言する: 一度タップされたらキーボードを隠す
+        let hideTap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapScreen))
+        hideTap.numberOfTapsRequired = 1
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(hideTap)
+
     }
     
     func getAPIData() {
