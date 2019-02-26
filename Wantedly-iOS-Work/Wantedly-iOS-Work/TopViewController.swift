@@ -123,8 +123,13 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // 検索文字列
+        print("SearchBar.text")
+        print(SearchBar.text)
+        if SearchBar.text != "" {
         getSearch()
         searchBar.endEditing(true)
+        }
     }
     
     func getSearch(){
