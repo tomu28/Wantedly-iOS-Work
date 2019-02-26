@@ -39,6 +39,12 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap)
 
+        // 検索バーのサーチアイコンの色を変更
+        let searchTextField = SearchBar.subviews[0].subviews[1] as! UITextField
+        let grassImageView = searchTextField.leftView as! UIImageView
+        let magnifyingGlassImage = grassImageView.image!.withRenderingMode(.alwaysTemplate)
+        grassImageView.image = magnifyingGlassImage
+        grassImageView.tintColor = UIColor.cyan
     }
     
     func getAPIData() {
