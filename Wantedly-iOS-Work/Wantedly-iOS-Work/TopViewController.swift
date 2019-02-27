@@ -110,7 +110,7 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         let label1 = cell.viewWithTag(1)as! UILabel
         let label2 = cell.viewWithTag(2)as! UILabel
-        
+        let label3 = cell.viewWithTag(3)as! UIImageView
         let label4 = cell.viewWithTag(4)as! UILabel
         let label5 = cell.viewWithTag(5)as! UIImageView
         
@@ -125,11 +125,16 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 //            label3.image = UIImage(named: url)
             label4.text = article["companyName"]!
             // ロゴを表示
-            cell.imageView?.af_setImage(withURL: URL(string: article["avatar"] as! String)!)
+            // cell.imageView?.af_setImage(withURL: URL(string: article["avatar"] as! String)!)
+            if URL(string: article["avatar"] as? String ?? "https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=50,dh=50,da=l,ds=s,cw=50,ch=50,cc=FFFFFF)/assets/images") != nil {
+                let AvatarURL: URL? = URL(string: article["avatar"] as? String ?? "https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=50,dh=50,da=l,ds=s,cw=50,ch=50,cc=FFFFFF)/assets/images")
+                label3.loadImageAsynchronously(url: AvatarURL)
+            }
 
             // 会社名を表示
-            let url: URL? = URL(string: article["image"] as! String)
-            label5.loadImageAsynchronously(url: url)
+            let CompanyImageURL: URL? = URL(string: article["image"] as? String ?? "https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=320,dh=131,da=s,ds=s,cw=320,ch=131,cc=FFFFFF)/assets/images/f")
+            label5.loadImageAsynchronously(url: CompanyImageURL)
+            
             
             //
             label1.layer.borderColor = UIColor.blue.cgColor
@@ -157,8 +162,8 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         selectlocation_suffix = newArticle ["Location_suffix"] as! String
         selectCompanyURL = newArticle["CompanyURL"] as! String
         
-        let AvatarURL: URL? = URL(string: newArticle["avatar"] as! String)
-        let ImageURL: URL? = URL(string: newArticle["image"] as! String)
+        let AvatarURL: URL? = URL(string: newArticle["avatar"] as? String ?? "https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=50,dh=50,da=l,ds=s,cw=50,ch=50,cc=FFFFFF)/assets/images")
+        let ImageURL: URL? = URL(string: newArticle["image"] as? String ?? "https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=320,dh=131,da=s,ds=s,cw=320,ch=131,cc=FFFFFF)/assets/images/")
         selectAvatar = AvatarURL
         selectImage = ImageURL
 
@@ -208,7 +213,11 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                         "looking_for": dataObject["looking_for"].string,
                         "companyName": dataObject["company"]["name"].string,
                         "image": dataObject["image"]["i_320_131"].string,
-                        "avatar": dataObject["company"]["avatar"]["s_50"].string
+                        "avatar": dataObject["company"]["avatar"]["s_50"].string,
+                        "description":  dataObject["description"].string,
+                        "Location": dataObject["location"].string,
+                        "Location_suffix": dataObject["location_suffix"].string,
+                        "CompanyURL": dataObject["company"]["url"].string
                     ]
                     APIDataList.append(APIData)
                     self.APIDataCount = APIDataList.count
