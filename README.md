@@ -3,14 +3,13 @@
 
 ## 動作の様子
 ### １画面目(トップページ)
-<img src="https://user-images.githubusercontent.com/28621480/53523093-38886a80-3b1f-11e9-852d-26694f3f1972.png" width="250">
+<img src="https://user-images.githubusercontent.com/28621480/53523093-38886a80-3b1f-11e9-852d-26694f3f1972.png" width="330">
 
 ### 2画面目(詳細画面)
-<img src="https://user-images.githubusercontent.com/28621480/53523199-88673180-3b1f-11e9-9ac4-17a29e994e9a.png" width="250">
+<img src="https://user-images.githubusercontent.com/28621480/53523199-88673180-3b1f-11e9-9ac4-17a29e994e9a.png" width="330">
 
 ### gif動画
-
-![gif](https://user-images.githubusercontent.com/28621480/53524427-b0a45f80-3b22-11e9-9007-c583d6045a13.gif)
+![git_movie](https://user-images.githubusercontent.com/28621480/53525017-3ecd1580-3b24-11e9-93fe-0842dbaeea1d.gif)
 
 ## 工夫した点
 - １画面目では、ユーザーが詳細ページをタップするキッカケとなる情報を絞り込んで表示しました。
