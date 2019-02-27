@@ -38,7 +38,6 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         getAPIData()
         print("viewDidLoad")
         print(APIDataCount)
@@ -114,29 +113,12 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         let label4 = cell.viewWithTag(4)as! UILabel
         let label5 = cell.viewWithTag(5)as! UIImageView
-//        label1.text = "募集タイトル"
-//        label2.text = "募集ポジション"
-
-//        label4.text = "会社名"
-//        label5.image = UIImage(named: "Label5")
         
         
-        // label1~4を表示
         if APIDataList != [] {
             
             var article = APIDataList[indexPath.row]
             Article = APIDataList[indexPath.row]
-            
-            print("indexPath.row")
-            print(indexPath.row)
-            type(of: indexPath.row)
-            
-            print("APIDataListの型")
-            type(of: APIDataList)
-            print("articleの型")
-            type(of: article)
-            // type(of: article["looking_for"])
-            // type(of: article["companyName"])
             
             label1.text = article["title"]!
             label2.text = article["looking_for"]!
@@ -169,13 +151,10 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         selectlocation_suffix = newArticle ["Location_suffix"] as! String
         selectCompanyURL = newArticle["CompanyURL"] as! String
         
-        
         let AvatarURL: URL? = URL(string: newArticle["avatar"] as! String)
         let ImageURL: URL? = URL(string: newArticle["image"] as! String)
         selectAvatar = AvatarURL
         selectImage = ImageURL
-        
-        print(selectDescription)
 
         performSegue(withIdentifier: "toDetailViewController", sender: nil)
     }
@@ -230,11 +209,9 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     print(APIData)
                 }
                 // JSONデータをViewに反映する
-                self.table.reloadData()
-                
+                self.table.reloadData()       
                 
         }
-        
         
     }
     
