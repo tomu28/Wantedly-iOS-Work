@@ -14,6 +14,9 @@ class DetailViewController: UIViewController {
     var Looking_for: String?
     var CompanyName: String?
     var Description: String?
+    var Location: String?
+    var Location_suffix: String?
+    var CompanyURL: String?
     
     var Image: URL?
     var Avatar: URL?
@@ -21,7 +24,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var RecruitmentTitleText: UITextView!
     @IBOutlet weak var Looking_forText: UITextView!
     @IBOutlet weak var CompanyNameText: UITextView!
-    
     @IBOutlet weak var DescriptionText: UITextView!
     
     @IBOutlet weak var AvatarImageView: UIImageView!
@@ -32,10 +34,10 @@ class DetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        print("Avatar")
-        print(Avatar)
-        print("Looking_for")
-        print(Looking_for)
+        print("CompanyURL")
+        print(CompanyURL)
+        print("Location_suffix")
+        print(Location_suffix)
         print("CompanyName")
         print(CompanyName)
         
@@ -51,12 +53,10 @@ class DetailViewController: UIViewController {
         DescriptionText.layer.cornerRadius = 8.0
         DescriptionText.layer.masksToBounds = true
         
-//        let url: URL? = URL(string: article["image"] as! String)
-//        label5.loadImageAsynchronously(url: url)
-        // こっちでURLを画像に変換
         AvatarImageView.loadImageAsynchronously(url: Avatar)
         CompanyImageView.loadImageAsynchronously(url: Image)
         
+    
         
     }
     

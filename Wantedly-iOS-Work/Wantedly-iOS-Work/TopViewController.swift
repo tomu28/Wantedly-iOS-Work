@@ -18,6 +18,9 @@ var selectTitle: String!
 var selectLooking_for: String!
 var selectCompanyName: String!
 var selectDescription: String!
+var selectLocation: String!
+var selectlocation_suffix: String!
+var selectCompanyURL: String!
 
 var selectAvatar: URL!
 var selectImage: URL!
@@ -78,8 +81,10 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     "companyName": dataObject["company"]["name"].string,
                     "image": dataObject["image"]["i_320_131"].string,
                     "avatar": dataObject["company"]["avatar"]["s_50"].string,
-                    "description":  dataObject["description"].string
-                    
+                    "description":  dataObject["description"].string,
+                    "Location": dataObject["location"].string,
+                    "Location_suffix": dataObject["location_suffix"].string,
+                    "CompanyURL": dataObject["company"]["url"].string
                     ]
                 APIDataList.append(APIData)
                 self.APIDataCount = APIDataList.count
@@ -160,6 +165,9 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         selectLooking_for = newArticle["looking_for"] as! String
         selectCompanyName = newArticle["companyName"] as! String
         selectDescription = newArticle["description"] as! String
+        selectLocation = newArticle["Location"] as! String
+        selectlocation_suffix = newArticle ["Location_suffix"] as! String
+        selectCompanyURL = newArticle["CompanyURL"] as! String
         
         
         let AvatarURL: URL? = URL(string: newArticle["avatar"] as! String)
@@ -178,6 +186,9 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         NVC.Looking_for = selectLooking_for
         NVC.CompanyName = selectCompanyName
         NVC.Description = selectDescription
+        NVC.Location = selectLocation
+        NVC.Location_suffix = selectlocation_suffix
+        NVC.CompanyURL = selectCompanyURL
         NVC.Image = selectImage
         NVC.Avatar = selectAvatar
     }
