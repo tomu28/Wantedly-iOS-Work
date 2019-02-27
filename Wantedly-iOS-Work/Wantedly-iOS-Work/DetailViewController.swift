@@ -14,6 +14,11 @@ class DetailViewController: UIViewController {
     var Looking_for: String?
     var CompanyName: String?
     
+    @IBOutlet weak var RecruitmentTitleText: UITextView!
+    @IBOutlet weak var Looking_forText: UITextView!
+    @IBOutlet weak var CompanyNameText: UITextView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,9 +33,10 @@ class DetailViewController: UIViewController {
         
         self.navigationItem.title = CompanyName
         
-//        if Title != nil {
-//            RecruitmentTitle.text = Title
-//        }
+        RecruitmentTitleText.text = Title
+        Looking_forText.text = Looking_for
+        CompanyNameText.text = CompanyName
+        
         
     }
     
