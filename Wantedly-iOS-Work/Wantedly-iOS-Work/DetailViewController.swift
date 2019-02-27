@@ -26,6 +26,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var CompanyNameText: UITextView!
     @IBOutlet weak var DescriptionText: UITextView!
     
+    @IBOutlet weak var LocationText: UITextView!
+    @IBOutlet weak var CompanyURLText: UITextView!
+    
     @IBOutlet weak var AvatarImageView: UIImageView!
     @IBOutlet weak var CompanyImageView: UIImageView!
     
@@ -56,7 +59,10 @@ class DetailViewController: UIViewController {
         AvatarImageView.loadImageAsynchronously(url: Avatar)
         CompanyImageView.loadImageAsynchronously(url: Image)
         
-    
+        LocationText.text = Location
+        // LocationText.text = Location_suffix
+        CompanyURLText.text = CompanyURL
+        
         
     }
     
