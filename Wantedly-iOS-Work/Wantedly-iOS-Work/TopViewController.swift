@@ -131,6 +131,12 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             let url: URL? = URL(string: article["image"] as! String)
             label5.loadImageAsynchronously(url: url)
             
+            //
+            label1.layer.borderColor = UIColor.blue.cgColor
+            label1.layer.borderWidth = 0.5
+            label1.layer.cornerRadius = 8.0
+            label1.layer.masksToBounds = true
+            
         }
         
         return cell
