@@ -78,10 +78,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="SearchBar" destination="Upf-i0-cVc" id="89A-OZ-Yfj"/>
                         <outlet property="table" destination="E7X-ej-psv" id="9pL-V4-kiR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="AYB-d6-ZJc">
+                    <connections>
+                        <action selector="tapScreenWithSender:" destination="BYZ-38-t0r" id="0g8-Mw-8z7"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="53.600000000000001" y="100.29985007496252"/>
         </scene>
