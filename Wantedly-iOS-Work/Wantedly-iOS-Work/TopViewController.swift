@@ -17,6 +17,10 @@ var Article: [String: String?] = [:]
 var selectTitle: String!
 var selectLooking_for: String!
 var selectCompanyName: String!
+var selectDescription: String!
+
+var selectAvatar: URL!
+var selectImage: URL!
 
 class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -73,7 +77,9 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     "looking_for": dataObject["looking_for"].string,
                     "companyName": dataObject["company"]["name"].string,
                     "image": dataObject["image"]["i_320_131"].string,
-                    "avatar": dataObject["company"]["avatar"]["s_50"].string
+                    "avatar": dataObject["company"]["avatar"]["s_50"].string,
+                    "description":  dataObject["description"].string
+                    
                     ]
                 APIDataList.append(APIData)
                 self.APIDataCount = APIDataList.count
@@ -153,6 +159,15 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         selectTitle = newArticle["title"] as! String
         selectLooking_for = newArticle["looking_for"] as! String
         selectCompanyName = newArticle["companyName"] as! String
+        selectDescription = newArticle["description"] as! String
+        
+        
+        let AvatarURL: URL? = URL(string: newArticle["avatar"] as! String)
+        let ImageURL: URL? = URL(string: newArticle["image"] as! String)
+        selectAvatar = AvatarURL
+        selectImage = ImageURL
+        
+        print(selectDescription)
 
         performSegue(withIdentifier: "toDetailViewController", sender: nil)
     }
@@ -162,6 +177,9 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         NVC.Title = selectTitle
         NVC.Looking_for = selectLooking_for
         NVC.CompanyName = selectCompanyName
+        NVC.Description = selectDescription
+        NVC.Image = selectImage
+        NVC.Avatar = selectAvatar
     }
     
     
