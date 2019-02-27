@@ -135,10 +135,8 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             let CompanyImageURL: URL? = URL(string: article["image"] as? String ?? "https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=320,dh=131,da=s,ds=s,cw=320,ch=131,cc=FFFFFF)/assets/images/f")
             label5.loadImageAsynchronously(url: CompanyImageURL)
             
-            
-            //
             label1.layer.borderColor = UIColor.blue.cgColor
-            label1.layer.borderWidth = 0.5
+            label1.layer.borderWidth = 0.8
             label1.layer.cornerRadius = 8.0
             label1.layer.masksToBounds = true
             
