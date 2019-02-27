@@ -12,7 +12,11 @@ import SwiftyJSON
 import AlamofireImage
 
 var APIDataList: [[String: String?]] = []
-var article: [[String: String?]] = []
+var Article: [String: String?] = [:]
+
+var selectTitle: String!
+var selectLooking_for: String!
+var selectCompanyName: String!
 
 class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -27,7 +31,6 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        navigationController?.setNavigationBarHidden(true, animated: false)
         
         getAPIData()
         print("viewDidLoad")
@@ -47,6 +50,10 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let magnifyingGlassImage = grassImageView.image!.withRenderingMode(.alwaysTemplate)
         grassImageView.image = magnifyingGlassImage
         grassImageView.tintColor = UIColor.cyan
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func getAPIData() {
@@ -106,7 +113,19 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         // label1~4を表示
         if APIDataList != [] {
             
-            let article = APIDataList[indexPath.row]
+            var article = APIDataList[indexPath.row]
+            Article = APIDataList[indexPath.row]
+            
+            print("indexPath.row")
+            print(indexPath.row)
+            type(of: indexPath.row)
+            
+            print("APIDataListの型")
+            type(of: APIDataList)
+            print("articleの型")
+            type(of: article)
+            // type(of: article["looking_for"])
+            // type(of: article["companyName"])
             
             label1.text = article["title"]!
             label2.text = article["looking_for"]!
@@ -114,7 +133,7 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             label4.text = article["companyName"]!
             // ロゴを表示
             cell.imageView?.af_setImage(withURL: URL(string: article["avatar"] as! String)!)
-            
+
             // 会社名を表示
             let url: URL? = URL(string: article["image"] as! String)
             label5.loadImageAsynchronously(url: url)
@@ -130,7 +149,19 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newArticle = APIDataList[indexPath.row]
+        selectTitle = newArticle["title"] as! String
+        selectLooking_for = newArticle["looking_for"] as! String
+        selectCompanyName = newArticle["companyName"] as! String
+
         performSegue(withIdentifier: "toDetailViewController", sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let NVC: DetailViewController = (segue.destination as? DetailViewController)!
+        NVC.Title = selectTitle
+        NVC.Looking_for = selectLooking_for
+        NVC.CompanyName = selectCompanyName
     }
     
     
@@ -145,7 +176,7 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func getSearch(){
-        article.removeAll()
+        Article.removeAll()
         APIDataList.removeAll()
         Alamofire.request("https://www.wantedly.com/api/v1/projects?q=" + SearchBar.text!)
             .responseJSON{ response in

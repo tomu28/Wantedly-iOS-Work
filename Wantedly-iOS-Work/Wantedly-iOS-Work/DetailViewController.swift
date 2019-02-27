@@ -9,11 +9,25 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    var Title: String?
+    var Looking_for: String?
+    var CompanyName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        print("Title")
+        print(Title)
+        print("Looking_for")
+        print(Looking_for)
+        print("CompanyName")
+        print(CompanyName)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
