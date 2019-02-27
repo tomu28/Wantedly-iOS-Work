@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     /*
