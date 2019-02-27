@@ -129,6 +129,10 @@ class TopViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         return 280.0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetailViewController", sender: nil)
+    }
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // 検索文字列

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2EC5672C837782666DE7FAF2 /* Pods_Wantedly_iOS_Work.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8CF4D5B4C5DA57314EADD7 /* Pods_Wantedly_iOS_Work.framework */; };
+		D83032F022265470005D48EC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83032EF22265470005D48EC /* DetailViewController.swift */; };
 		D842EA332224424000BC4360 /* Label5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D842EA322224423F00BC4360 /* Label5.jpeg */; };
 		D842EA3A222538C600BC4360 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D842EA39222538C600BC4360 /* UIImageView.swift */; };
 		D8BDCFC622214BCB00AF1721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BDCFC522214BCB00AF1721 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		95934564783AE94B1B64CC72 /* Pods-Wantedly-iOS-Work.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wantedly-iOS-Work.debug.xcconfig"; path = "Target Support Files/Pods-Wantedly-iOS-Work/Pods-Wantedly-iOS-Work.debug.xcconfig"; sourceTree = "<group>"; };
+		D83032EF22265470005D48EC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D842EA322224423F00BC4360 /* Label5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Label5.jpeg; sourceTree = "<group>"; };
 		D842EA39222538C600BC4360 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		D8BDCFC222214BCB00AF1721 /* Wantedly-iOS-Work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wantedly-iOS-Work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +100,7 @@
 				D842EA322224423F00BC4360 /* Label5.jpeg */,
 				D8BDCFCE22214BCE00AF1721 /* LaunchScreen.storyboard */,
 				D8BDCFD122214BCE00AF1721 /* Info.plist */,
+				D83032EF22265470005D48EC /* DetailViewController.swift */,
 			);
 			path = "Wantedly-iOS-Work";
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				D842EA3A222538C600BC4360 /* UIImageView.swift in Sources */,
 				D8BDCFC822214BCB00AF1721 /* TopViewController.swift in Sources */,
 				D8BDCFC622214BCB00AF1721 /* AppDelegate.swift in Sources */,
+				D83032F022265470005D48EC /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
